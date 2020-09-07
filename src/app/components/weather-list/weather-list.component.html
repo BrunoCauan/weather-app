@@ -1,0 +1,21 @@
+<div class="container">
+    <form #addCityForm="ngForm" (ngSubmit)="addCity(addCityForm.value.newCity, true)">
+        <div class="form-field">
+            <label for="newCity">City name:</label>
+            <p class="error">{{ error }}</p>
+            <input name="newCity" id="newCity" ngModel #newCity="ngModel" type="text" required placeholder="Porto Alegre, Los Angeles, Buenos Aires..."/>
+        </div>
+        
+        <button type="submit">Add</button>
+    </form>
+    
+    <ul class="cities">
+        <city-weather 
+            *ngFor="let city of cities; let i = index" 
+            [city]="city" 
+            [index]="i"
+            (removeCity)="removeCity($event)"
+        >
+        </city-weather>
+    </ul>
+</div>

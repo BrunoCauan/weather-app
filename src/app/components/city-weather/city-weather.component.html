@@ -1,0 +1,18 @@
+<li class="card" *ngIf="city">
+    <h2 class="location-info">
+        <span class="city">{{ city.name }}</span>
+        <sup class="country">{{ city.country }}</sup>
+    </h2>
+
+    <h1 class="temperature">
+        {{ city.temperature }}
+        <sup>°C</sup>
+    </h1>
+    
+    <figure>
+        <img class="icon" [src]="city.icon" alt="city.description">
+        <figcaption class="description">{{ city.description }}</figcaption>
+    </figure>
+
+    <button (click)="removeCityTrigger()" class="remove">X</button>
+</li>

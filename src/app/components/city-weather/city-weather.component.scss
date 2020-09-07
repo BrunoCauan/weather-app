@@ -1,0 +1,61 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px 10%;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #53627c;
+
+    .country {
+        padding: 0.2em 0.6em;
+        border-radius: 30px;
+        color: #fff;
+        background: #8257e6;
+        margin-left: 3px;
+    }
+
+    .temperature {
+        font-size: 5rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #1e2432;
+    }
+
+    sup {
+        font-size: 0.5em;
+    }
+
+    figure {
+        text-align: center;
+
+        .description {
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .remove {
+        position: absolute;
+        top: 20px;
+        right: 5%;
+
+        padding: 0.2em 0.6em;
+        border-radius: 30px;
+        font-size: 12px;
+
+        border: none;
+        outline: none;
+        color: #fff;
+        background-color: #d34242;
+        border: 2px solid #d34242;
+        font-weight: bold;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
