@@ -12,7 +12,7 @@ export class WeatherService {
     constructor(private httpClient: HttpClient) {}
 
     get(cityName: string) {
-        return this.httpClient.get<City>(`${API.BASE_URL}`, {
+        return this.httpClient.get<City>(API.BASE_URL, {
             params: new HttpParams()
                 .set('q', cityName)
                 .set('units', 'metric')
