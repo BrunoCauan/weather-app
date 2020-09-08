@@ -47,9 +47,9 @@ export class WeatherListComponent implements OnInit {
         );
     }
 
-    removeCity(index: number) {
-        this.cityNames.splice(index, 1);
-        this.cities.splice(index, 1);
+    removeCity(cityName: string) {
+        this.cityNames.splice(this.cityNames.findIndex(currentCity => currentCity === cityName), 1);
+        this.cities.splice(this.cities.findIndex(currentCity => currentCity.name === cityName), 1);
         localStorage.setItem('cities', JSON.stringify(this.cityNames));
     }
 }

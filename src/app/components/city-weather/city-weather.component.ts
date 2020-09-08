@@ -9,12 +9,11 @@ import City from '../../models/city.model';
 })
 export class CityWeatherComponent {
     @Input() city: City;
-    @Input() index: number;
-    @Output() removeCity = new EventEmitter<number>();
+    @Output() removeCity = new EventEmitter<string>();
 
     constructor() {}
 
     removeCityTrigger() {
-        this.removeCity.emit(this.index);
+        this.removeCity.emit(this.city.name);
     }
 }

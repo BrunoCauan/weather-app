@@ -11,9 +11,8 @@
     
     <ul class="cities">
         <city-weather 
-            *ngFor="let city of cities; let i = index" 
+            *ngFor="let city of cities" 
             [city]="city" 
-            [index]="i"
             (removeCity)="removeCity($event)"
         >
         </city-weather>
