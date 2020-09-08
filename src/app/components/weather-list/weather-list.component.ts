@@ -9,16 +9,15 @@ import City from './../../models/city.model';
     styleUrls: ['./weather-list.component.scss'],
 })
 export class WeatherListComponent implements OnInit {
-    cityNames: string[] = [];
     cities: City[] = [];
-
     error: string = '';
 
     constructor(private _weatherService: WeatherService) {}
 
     ngOnInit(): void {
-        this.cityNames = JSON.parse(localStorage.getItem('cities'));
-        this.cityNames.forEach((cityName) => {
+        const cityNames: string[] = JSON.parse(localStorage.getItem('cities'));
+        
+        cityNames.forEach((cityName) => {
             this.addCity(cityName);
         });
     }
@@ -33,8 +32,7 @@ export class WeatherListComponent implements OnInit {
                     this.cities.push(city);
 
                     if (addToStorage) {
-                        this.cityNames.push(cityName);
-                        localStorage.setItem('cities', JSON.stringify(this.cityNames));
+                        this.updateLocalStorage();
                         this.error = '';
                     }
                 } else {
@@ -48,8 +46,11 @@ export class WeatherListComponent implements OnInit {
     }
 
     removeCity(cityName: string) {
-        this.cityNames.splice(this.cityNames.findIndex(currentCity => currentCity === cityName), 1);
         this.cities.splice(this.cities.findIndex(currentCity => currentCity.name === cityName), 1);
-        localStorage.setItem('cities', JSON.stringify(this.cityNames));
+        this.updateLocalStorage();
+    }
+    
+    updateLocalStorage() {
+        localStorage.setItem('cities', JSON.stringify(this.cities.map(currentCity => currentCity.name)));
     }
 }
